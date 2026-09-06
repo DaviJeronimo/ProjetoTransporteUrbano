@@ -1,0 +1,17 @@
+.pageContainer {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+}
+
+.secaoLista {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,124 @@
+.cardContainer {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Painel Esquerdo (Atalho para Login) */
+.painelEsquerdo {
+  width: 40%;
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.tituloPainel {
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: bold;
+}
+
+.textoPainel {
+  font-size: 14px;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.btnIrLogin {
+  padding: 10px 24px;
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  background: transparent;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btnIrLogin:hover {
+  background-color: #ffffff;
+  color: #2563eb;
+}
+
+/* Painel Direito (Campos de Cadastro na Vertical) */
+.painelDireito {
+  width: 60%;
+  padding: 40px 30px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tituloForm {
+  font-size: 22px;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.campo {
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.inputCampo, .selectCampo {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+  background-color: #dee1e4;
+  color: black;
+}
+
+.btnCadastrar {
+  width: 100%;
+  padding: 12px;
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btnCadastrar:hover {
+  background-color: #1d4ed8;
+}
+
+/* Responsividade para Celulares (telas até 768px) */
+@media (max-width: 768px) {
+  .cardContainer {
+    flex-direction: column;
+    width: 95%;
+  }
+
+  .painelEsquerdo {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .painelDireito {
+    width: 100%;
+    padding: 30px 20px;
+  }
+}
