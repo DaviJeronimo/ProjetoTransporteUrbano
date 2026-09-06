@@ -28,7 +28,7 @@ public class VeiculoDao {
 
     public void salvar(Veiculo veiculo) {
 
-        String sql = "INSERT INTO veiculo (id, placa, modelo, capacidade, tipo, status, linha) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO veiculo (id, placa, modelo, capacidade, tipo, status, linha) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         jdbcTemplate.update(
                 sql,
@@ -49,11 +49,11 @@ public class VeiculoDao {
         return jdbcTemplate.query(sql, rowMapper);
     }
 
-    public Veiculo buscarPorId(UUID id){
+    public Veiculo buscarPorId(UUID id) {
         String sql = "SELECT * FROM veiculo WHERE id = ?";
         List<Veiculo> resultadoBusca = jdbcTemplate.query(sql, rowMapper, id.toString());
 
-        if (resultadoBusca.isEmpty()){
+        if (resultadoBusca.isEmpty()) {
             return null;
         }
 
