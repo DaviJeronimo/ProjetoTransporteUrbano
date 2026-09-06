@@ -34,6 +34,16 @@ public class UsuarioDao {
                 usuario.getSenha(), usuario.getCargo());
     }
 
+    public Usuario autenticar(String email, String senha) {
+        String sql = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+        List<Usuario> resultado = template.query(sql, rowMapper, email, senha);
+
+        if (resultado.isEmpty()) {
+            return null;
+        }
+        return resultado.getFirst();
+    }
+
     public List<Usuario> listar() {
         String sql = "SELECT * FROM usuario";
         return template.query(sql, rowMapper);

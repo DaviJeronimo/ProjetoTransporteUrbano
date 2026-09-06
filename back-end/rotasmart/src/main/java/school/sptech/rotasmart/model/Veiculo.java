@@ -4,12 +4,12 @@ import java.util.UUID;
 
 public class Veiculo {
     private UUID id;
-    private String placa;
-    private String modelo;
-    private Integer capacidade;
-    private String tipo;
-    private String status;
-    private String linha;
+        private String placa;
+        private String modelo;
+        private Integer capacidade;
+        private String tipo;
+        private String status;
+        private String linha;
 
     public Veiculo() {
     }
