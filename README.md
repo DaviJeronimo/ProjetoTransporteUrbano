@@ -732,27 +732,159 @@ Antes de executar o projeto, é necessário possuir instalado:
 
 ---
 
-# ▶️ Executando a API
+# ☕ Executando a API Spring Boot pelo IntelliJ IDEA
 
-Primeiro, entre na pasta do backend:
+O backend utiliza **Spring Boot** e deve ser executado pelo **IntelliJ IDEA**.
 
-```bash
-cd back-end/rotasmart
+## 1. Abrir o IntelliJ IDEA
+
+Abra o **IntelliJ IDEA**.
+
+Na tela inicial, selecione:
+
+```text
+Open
 ```
 
-### Linux/macOS
+---
 
-```bash
-./mvnw spring-boot:run
+## 2. Abrir o projeto do backend
+
+Localize a pasta do projeto:
+
+```text
+ProjetoTransporteUrbano/
+└── back-end/
+    └── rotasmart/
 ```
 
-### Windows
+Selecione a pasta:
 
-```cmd
-mvnw.cmd spring-boot:run
+```text
+rotasmart
 ```
 
-Após iniciar, a API estará disponível em:
+e clique em:
+
+```text
+Open
+```
+
+---
+
+## 3. Aguardar o carregamento do projeto
+
+Após abrir o projeto, o IntelliJ IDEA identificará o arquivo:
+
+```text
+pom.xml
+```
+
+Aguarde o IntelliJ carregar:
+
+- o projeto Maven;
+- as dependências;
+- os arquivos do Spring Boot;
+- a estrutura do projeto.
+
+Na primeira execução, esse processo pode levar alguns minutos.
+
+---
+
+## 4. Localizar a classe principal
+
+No painel **Project** do IntelliJ IDEA, navegue até:
+
+```text
+src
+└── main
+    └── java
+        └── school
+            └── sptech
+                └── rotasmart
+```
+
+Localize o arquivo:
+
+```text
+RotasmartApplication.java
+```
+
+A estrutura será semelhante a:
+
+```text
+rotasmart
+└── src
+    └── main
+        └── java
+            └── school
+                └── sptech
+                    └── rotasmart
+                        └── RotasmartApplication.java
+```
+
+---
+
+## 5. Abrir a classe principal
+
+Clique duas vezes em:
+
+```text
+RotasmartApplication.java
+```
+
+A classe principal contém o método `main`, responsável por iniciar o Spring Boot.
+
+---
+
+## 6. Executar o Spring Boot
+
+Com o arquivo `RotasmartApplication.java` aberto, procure o ícone verde de execução:
+
+```text
+▶
+```
+
+ao lado do método `main`.
+
+Clique nele e selecione:
+
+```text
+Run 'RotasmartApplication'
+```
+
+Também é possível executar da seguinte forma:
+
+1. Clique com o botão direito sobre `RotasmartApplication.java`;
+2. Selecione:
+
+```text
+Run 'RotasmartApplication'
+```
+
+O IntelliJ IDEA iniciará a aplicação Spring Boot.
+
+---
+
+## 7. Verificar se a API foi iniciada
+
+Após executar a aplicação, será aberta a aba:
+
+```text
+Run
+```
+
+na parte inferior do IntelliJ IDEA.
+
+Aguarde até aparecer uma mensagem semelhante a:
+
+```text
+Started RotasmartApplication
+```
+
+Essa mensagem indica que a aplicação foi iniciada corretamente.
+
+A API estará disponível em:
 
 ```text
 http://localhost:8080
