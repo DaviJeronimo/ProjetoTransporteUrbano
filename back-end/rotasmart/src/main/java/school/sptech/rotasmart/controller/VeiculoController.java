@@ -12,7 +12,7 @@ import java.util.UUID;
 @RequestMapping("/veiculos")
 @CrossOrigin(origins = "http://localhost:5173")
 public class VeiculoController {
-
+    //adicionando comentário para corrigir commit errado
     private final VeiculoDao veiculoDao;
 
     public VeiculoController(VeiculoDao veiculoDao) {

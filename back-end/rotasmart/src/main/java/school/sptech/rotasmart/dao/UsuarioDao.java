@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Repository
 public class UsuarioDao {
-
+//adicionando comentário para corrigir commit errado
     private final JdbcTemplate template;
 
     public UsuarioDao(JdbcTemplate template) {
