@@ -1133,7 +1133,6 @@ A API utiliza códigos HTTP para indicar o resultado das operações.
 
 
 # 🎓 Projeto acadêmico
-
 **RotaSmart — Gestão de Transporte Urbano**
 
 Projeto desenvolvido para fins acadêmicos, com foco no desenvolvimento e integração de uma API REST com uma aplicação Front-end.
