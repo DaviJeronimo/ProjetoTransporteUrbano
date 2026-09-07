@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./src/assets/rotasmart-logo.png" alt="RotaSmart Logo" width="280" />
+  <img src="./front-end/rota-smart/src/assets/rotasmart-logo.png" alt="RotaSmart Logo" width="280" />
 </p>
 
 # RotaSmart
