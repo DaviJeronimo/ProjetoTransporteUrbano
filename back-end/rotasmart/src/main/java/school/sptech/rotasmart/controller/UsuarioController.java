@@ -36,10 +36,17 @@ public class UsuarioController {
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody Usuario usuario) {
 
+
+        if (usuario.getNome() == null || usuario.getNome().isBlank()) {
+            return ResponseEntity.status(400).body("O nome do usuário é obrigatório!");
+        }
+
+
         if (!EmailValido(usuario.getEmail())) {
             return ResponseEntity.status(400).body("E-mail inválido! Informe um e-mail com formato correto " +
                     "(ex: usuario@dominio.com).");
         }
+
 
         if (!SenhaValida(usuario.getSenha())) {
             return ResponseEntity.status(400)
@@ -51,48 +58,32 @@ public class UsuarioController {
             usuario.setId(UUID.randomUUID());
         }
 
-        usuarioDao.salvar(usuario);
-        return ResponseEntity.status(201).body(usuario);
+        try {
+            usuarioDao.salvar(usuario);
+            return ResponseEntity.status(201).body(usuario);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body("Erro no banco de dados ao cadastrar. Verifique se o e-mail já existe.");
+        }
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Usuario usuarioLogin) {
-        if (usuarioLogin.getEmail() == null || usuarioLogin.getSenha() == null) {
-            return ResponseEntity.status(400).body("E-mail e senha são obrigatórios!");
+        try {
+            Usuario usuarioAutenticado = usuarioDao.autenticar(usuarioLogin.getEmail(), usuarioLogin.getSenha());
+
+            if (usuarioAutenticado == null) {
+                return ResponseEntity.status(401).body("E-mail ou senha inválidos.");
+            }
+
+            return ResponseEntity.status(200).body(usuarioAutenticado);
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseEntity.status(500).body("Erro no banco de dados ao tentar logar.");
         }
-
-        Usuario usuarioAutenticado = usuarioDao.autenticar(usuarioLogin.getEmail(), usuarioLogin.getSenha());
-
-        if (usuarioAutenticado == null) {
-            return ResponseEntity.status(401).body("E-mail ou senha inválidos!");
-        }
-
-        return ResponseEntity.status(200).body(usuarioAutenticado);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable UUID id, @RequestBody Usuario usuario) {
-
-        if (!EmailValido(usuario.getEmail())) {
-            return ResponseEntity.status(400)
-                    .body("E-mail inválido! Informe um e-mail com formato correto.");
-        }
-
-        if (!SenhaValida(usuario.getSenha())) {
-            return ResponseEntity.status(400)
-                    .body("Senha inválida! A senha deve ter no mínimo 8 caracteres, " +
-                            "pelo menos 1 letra maiúscula e 1 caractere especial.");
-        }
-
-        int linhasAfetadas = usuarioDao.atualizar(id, usuario);
-
-        if (linhasAfetadas == 0) {
-            return ResponseEntity.status(404).build();
-        }
-
-        usuario.setId(id);
-        return ResponseEntity.ok(usuario);
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable UUID id) {

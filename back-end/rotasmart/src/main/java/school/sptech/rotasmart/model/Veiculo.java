@@ -44,24 +44,12 @@ public class Veiculo {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
-
     public Integer getCapacidade() {
         return capacidade;
     }
 
-    public void setCapacidade(Integer capacidade) {
-        this.capacidade = capacidade;
-    }
-
     public String getTipo() {
         return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public String getStatus() {
@@ -74,9 +62,5 @@ public class Veiculo {
 
     public String getLinha() {
         return linha;
-    }
-
-    public void setLinha(String linha) {
-        this.linha = linha;
     }
 }

@@ -21,8 +21,24 @@ public class VeiculoController {
 
     @PostMapping
     public ResponseEntity<?> criar(@RequestBody Veiculo novoVeiculo) {
-        if (!validarPlaca(novoVeiculo.getPlaca())) {
-            return ResponseEntity.status(400).body("Placa inválida! Informe de 7 a 8 caracteres.");
+        if (novoVeiculo.getPlaca() == null || novoVeiculo.getPlaca().trim().isEmpty()) {
+            return ResponseEntity.status(400).body("A placa é obrigatória!");
+        }
+
+        String placaFormatada = novoVeiculo.getPlaca().trim().toUpperCase();
+
+
+        if (!validarPlaca(placaFormatada)) {
+            return ResponseEntity.status(400).body("Placa inválida! A placa deve conter 8 caracteres e conter pelo menos um número.");
+        }
+
+
+        List<Veiculo> veiculosExistentes = veiculoDao.listar();
+        for (int i = 0; i < veiculosExistentes.size(); i++) {
+            Veiculo v = veiculosExistentes.get(i);
+            if (v.getPlaca() != null && v.getPlaca().equalsIgnoreCase(placaFormatada)) {
+                return ResponseEntity.status(400).body("Esta placa já está cadastrada no sistema!");
+            }
         }
 
         if (novoVeiculo.getCapacidade() == null || novoVeiculo.getCapacidade() <= 0) {
@@ -30,7 +46,7 @@ public class VeiculoController {
         }
 
         novoVeiculo.setId(UUID.randomUUID());
-        novoVeiculo.setPlaca(novoVeiculo.getPlaca().trim().toUpperCase());
+        novoVeiculo.setPlaca(placaFormatada);
 
         if (novoVeiculo.getStatus() == null || novoVeiculo.getStatus().isBlank()) {
             novoVeiculo.setStatus("DISPONIVEL");
@@ -60,29 +76,6 @@ public class VeiculoController {
         return ResponseEntity.status(200).body(veiculo);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable UUID id, @RequestBody Veiculo veiculoAtualizado) {
-
-        if (veiculoAtualizado.getPlaca() != null) {
-            if (!validarPlaca(veiculoAtualizado.getPlaca())) {
-                return ResponseEntity.status(400).body("Placa inválida! Informe de 7 a 8 caracteres.");
-            }
-            veiculoAtualizado.setPlaca(veiculoAtualizado.getPlaca().trim().toUpperCase());
-        }
-
-        // Valida a capacidade APENAS se ela for enviada no corpo
-        if (veiculoAtualizado.getCapacidade() != null && veiculoAtualizado.getCapacidade() <= 0) {
-            return ResponseEntity.status(400).body("Capacidade deve ser maior que 0.");
-        }
-
-        int linhasAfetadas = veiculoDao.atualizar(id, veiculoAtualizado);
-
-        if (linhasAfetadas > 0) {
-            veiculoAtualizado.setId(id);
-            return ResponseEntity.status(200).body(veiculoAtualizado);
-        }
-        return ResponseEntity.status(404).build();
-    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable UUID id) {
@@ -93,6 +86,7 @@ public class VeiculoController {
         return ResponseEntity.status(404).build();
     }
 
+
     private boolean validarPlaca(String placa) {
         if (placa == null) {
             return false;
@@ -100,6 +94,21 @@ public class VeiculoController {
 
         String placaLimpa = placa.trim();
 
-        return placaLimpa.length() >= 7 && placaLimpa.length() <= 8;
+
+        if (placaLimpa.length() < 8) {
+            return false;
+        }
+
+
+        boolean temNumero = false;
+        for (int i = 0; i < placaLimpa.length(); i++) {
+            char c = placaLimpa.charAt(i);
+            if (Character.isDigit(c)) {
+                temNumero = true;
+                break;
+            }
+        }
+
+        return temNumero;
     }
 }
