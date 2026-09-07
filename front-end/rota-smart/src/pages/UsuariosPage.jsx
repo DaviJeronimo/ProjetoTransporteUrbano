@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import styles from "../styles/UsuariosPage.module.css";
 import { UsuarioForm } from "../components/UsuarioForm";
-import { UsuarioList } from "../components/UsuarioList";
 import { CardErro } from "../components/CardErro";
 
 export function UsuariosPage() {
