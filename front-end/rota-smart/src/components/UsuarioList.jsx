@@ -1,6 +1,6 @@
 import styles from "../styles/UsuarioList.module.css";
 
-export function UsuarioList({ usuarios = [], atualizarUsuario, deletarUsuario }) {
+export function UsuarioList({ usuarios = [], deletarUsuario }) {
   return (
     <div className={styles.listContainer}>
       <h3 className={styles.subtitulo}>Usuários Cadastrados (Visão do Administrador)</h3>
@@ -19,11 +19,7 @@ export function UsuarioList({ usuarios = [], atualizarUsuario, deletarUsuario })
               </div>
               
               <div className={styles.acoesItem}>
-                {atualizarUsuario && (
-                  <button className={styles.btnAtualizar} onClick={() => atualizarUsuario(usuario?.id)}>
-                    Atualizar
-                  </button>
-                )}
+                
                 {deletarUsuario && (
                   <button className={styles.btnDeletar} onClick={() => deletarUsuario(usuario?.id)}>
                     Deletar
