@@ -1,50 +1,139 @@
-.formCard {
-  width: 90%;
-  max-width: 750px;
-  margin: 20px auto;
-  padding: 20px;
+.cardContainer {
+  display: flex;
+  width: 100%;
+  max-width: 780px;
   background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  box-sizing: border-box;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  margin-bottom: 30px;
 }
 
-.titulo {
-  font-size: 20px;
-  color: #1e3a8a;
-  margin-bottom: 15px;
-  text-align: center;
-  font-weight: bold;
-}
 
-.campo {
-  width: 100%;
-  margin-bottom: 12px;
-}
-
-.inputCampo {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
+.cardErro {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
   border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 15px;
   font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
-  background-color: #f8fafc;
+}
+
+.btnFechar {
+  background: none;
+  border: none;
+  color: #842029;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.bannerEsquerdo {
+  width: 40%;
+  background-color: #4865f6;
+  color: #ffffff;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.tituloBanner {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.subtituloBanner {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  opacity: 0.95;
+}
+
+
+.secaoFormulario {
+  width: 60%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.tituloForm {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333333;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.inputVeiculo {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #e2e8f0;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333333;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.inputVeiculo:focus {
+  border-color: #4865f6;
+  background-color: #ffffff;
 }
 
 .btnCadastrar {
+  margin-top: 8px;
   width: 100%;
   padding: 12px;
-  background-color: #2563eb;
+  background-color: #4865f6;
   color: #ffffff;
   border: none;
-  border-radius: 20px;
-  font-weight: bold;
+  border-radius: 25px;
   font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
-  margin-top: 10px;
+  transition: background-color 0.2s ease;
 }
 
 .btnCadastrar:hover {
-  background-color: #1d4ed8;
+  background-color: #3651d4;
+}
+
+.logoForm {
+  width: 72px;
+  height: auto;
+  display: block;
+  margin: 0 auto 16px auto;
+  object-fit: contain;
+}
+
+@media (max-width: 650px) {
+  .cardContainer {
+    flex-direction: column;
+  }
+  .bannerEsquerdo, 
+  .secaoFormulario {
+    width: 100%;
+  }
 }

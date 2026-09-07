@@ -1,7 +1,7 @@
 package school.sptech.rotasmart.model;
 
 import java.util.UUID;
-//adicionando comentário para corrigir commit errado
+
 public class Veiculo {
     private UUID id;
         private String placa;

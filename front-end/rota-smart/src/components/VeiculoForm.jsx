@@ -1,84 +1,89 @@
+import { CardErro } from "../components/CardErro";
 import styles from "../styles/VeiculoForm.module.css";
+import logo from "../assets/rotasmart-logo.png";
 
 export function VeiculoForm({ 
   modelo, setModelo, 
   placa, setPlaca, 
-  capacidade, setCapacidade,
-  tipo, setTipo,
-  status, setStatus,
-  linha, setLinha,
-  cadastrarVeiculo 
+  capacidade, setCapacidade, 
+  tipo, setTipo, 
+  status, setStatus, 
+  linha, setLinha, 
+  cadastrarVeiculo,
+  mensagemErro,
+  setMensagemErro
 }) {
   return (
-    <div className={styles.formCard}>
-      <h3 className={styles.titulo}>Cadastrar Veículo</h3>
-
-      <div className={styles.campo}>
-        <input 
-          className={styles.inputCampo} 
-          type="text"
-          placeholder="Modelo (ex: Caio Apache VIP)" 
-          value={modelo} 
-          onChange={(e) => setModelo(e.target.value)} 
-        />
+    <div className={styles.cardContainer}>
+      <div className={styles.bannerEsquerdo}>
+        <h2 className={styles.tituloBanner}>RotaSmart</h2>
+        <p className={styles.subtituloBanner}>
+          Cadastre novos veículos para manter o controle da frota e das rotas atualizado.
+        </p>
       </div>
 
-      <div className={styles.campo}>
-        <input 
-          className={styles.inputCampo} 
-          type="text"
-          placeholder="Placa" 
-          value={placa} 
-          onChange={(e) => setPlaca(e.target.value)} 
-        />
-      </div>
+      
+      <div className={styles.secaoFormulario}>
+        <img src={logo} alt="RotaSmart Logo" className={styles.logoForm} />
+        <h3 className={styles.tituloForm}>Cadastrar Veículo</h3>
 
-      <div className={styles.campo}>
-        <input 
-          className={styles.inputCampo} 
-          type="number"
-          placeholder="Capacidade (passageiros)" 
-          value={capacidade} 
-          onChange={(e) => setCapacidade(e.target.value)} 
+        
+        <CardErro 
+          mensagem={mensagemErro} 
+          aoFechar={() => setMensagemErro("")} 
         />
-      </div>
 
-      <div className={styles.campo}>
-        <input 
-          className={styles.inputCampo} 
-          type="text"
-          placeholder="Tipo (ex: Ônibus, Van, Micro-ônibus)" 
-          value={tipo} 
-          onChange={(e) => setTipo(e.target.value)} 
-        />
-      </div>
-
-      <div className={styles.campo}>
-        <select 
-          className={styles.inputCampo} 
-          value={status} 
-          onChange={(e) => setStatus(e.target.value)}
+        <form 
+          className={styles.formulario}
+          noValidate
+          onSubmit={(e) => { e.preventDefault(); cadastrarVeiculo(); }}
         >
-          <option value="">Selecione o Status</option>
-          <option value="Ativo">Ativo</option>
-          <option value="Manutenção">Manutenção</option>
-          <option value="Inativo">Inativo</option>
-        </select>
-      </div>
+          <input 
+            className={styles.inputVeiculo}
+            value={modelo} 
+            onChange={(e) => setModelo(e.target.value)} 
+            placeholder="Modelo" 
+          />
+          <input 
+            className={styles.inputVeiculo}
+            value={placa} 
+            onChange={(e) => setPlaca(e.target.value)} 
+            placeholder="Placa (ex: ABC-1D23)" 
+          />
+          <input 
+            className={styles.inputVeiculo}
+            type="number" 
+            value={capacidade} 
+            onChange={(e) => setCapacidade(e.target.value)} 
+            placeholder="Capacidade" 
+          />
+          <input 
+            className={styles.inputVeiculo}
+            value={tipo} 
+            onChange={(e) => setTipo(e.target.value)} 
+            placeholder="Tipo (ex: Ônibus, Van, Micro-ônibus)" 
+          />
+          <input 
+            className={styles.inputVeiculo}
+            value={linha} 
+            onChange={(e) => setLinha(e.target.value)} 
+            placeholder="Linha" 
+          />
+          <select 
+            className={styles.inputVeiculo}
+            value={status || "DISPONIVEL"} 
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="DISPONIVEL">Disponível</option>
+            <option value="EM_ROTA">Em Rota</option>
+            <option value="EM_MANUTENCAO">Em Manutenção</option>
+          </select>
 
-      <div className={styles.campo}>
-        <input 
-          className={styles.inputCampo} 
-          type="text"
-          placeholder="Linha (ex: 8000-10 Lapa / Ramos)" 
-          value={linha} 
-          onChange={(e) => setLinha(e.target.value)} 
-        />
+          <button className={styles.btnCadastrar} type="submit">
+            CADASTRAR
+          </button>
+        </form>
       </div>
-
-      <button className={styles.btnCadastrar} onClick={cadastrarVeiculo}>
-        Cadastrar
-      </button>
     </div>
   );
 }

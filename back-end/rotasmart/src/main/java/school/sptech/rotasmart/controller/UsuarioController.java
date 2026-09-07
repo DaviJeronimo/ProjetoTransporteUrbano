@@ -12,7 +12,7 @@ import java.util.UUID;
 @RequestMapping("/usuarios")
 @CrossOrigin(origins = "http://localhost:5173")
 public class UsuarioController {
-    //adicionando comentário para corrigir commit errado
+
     private final UsuarioDao usuarioDao;
 
     public UsuarioController(UsuarioDao usuarioDao) {

@@ -7,7 +7,7 @@ import school.sptech.rotasmart.model.Veiculo;
 
 import java.util.List;
 import java.util.UUID;
-//adicionando comentário para corrigir commit errado
+
 @Repository
 public class VeiculoDao {
     private final JdbcTemplate jdbcTemplate;

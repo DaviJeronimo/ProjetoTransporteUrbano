@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import styles from "../styles/UsuariosPage.module.css";
 import { UsuarioForm } from "../components/UsuarioForm";
 import { UsuarioList } from "../components/UsuarioList";
+import { CardErro } from "../components/CardErro";
 
 export function UsuariosPage() {
-    // Definido como null até a implementação da autenticação no login
+    const navigate = useNavigate(); 
+
     const [usuarioLogado, setUsuarioLogado] = useState(null); 
 
     const [usuarios, setUsuarios] = useState([]);
@@ -13,6 +16,7 @@ export function UsuariosPage() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [cargo, setCargo] = useState("");
+    const [mensagemErro, setMensagemErro] = useState("");
 
     function buscarDados() {
         axios.get("http://localhost:8080/usuarios")
@@ -20,25 +24,34 @@ export function UsuariosPage() {
         .catch(error => console.log("Houve um erro na requisição:", error));
     }
 
+    function irParaLogin() {
+        navigate("/login");
+    }
+
     function cadastrarUsuario() {
+        setMensagemErro("");
+
         axios.post("http://localhost:8080/usuarios", { nome, email, senha, cargo })
         .then(() => {
             setNome(""); setEmail(""); setSenha(""); setCargo("");
+            
+            
             if (usuarioLogado?.cargo?.toLowerCase() === "administrador") {
                 buscarDados();
+            } else {
+                irParaLogin(); 
             }
         })
-        .catch(() => console.log("Erro na requisição"));
+        .catch((erro) => {
+            if (erro.response && erro.response.data) {
+                setMensagemErro(erro.response.data);
+            } else {
+                setMensagemErro("Erro ao cadastrar usuário.");
+            }
+        });
     }
 
-    function atualizarUsuario(id) {
-        axios.put(`http://localhost:8080/usuarios/${id}`, { nome, email, senha, cargo })
-        .then(() => {
-            setNome(""); setEmail(""); setSenha(""); setCargo("");
-            buscarDados();
-        })
-        .catch(() => console.log("Erro na requisição"));
-    }
+
 
     function deletarUsuario(id) {
         axios.delete(`http://localhost:8080/usuarios/${id}`)
@@ -46,14 +59,15 @@ export function UsuariosPage() {
         .catch(() => console.log("Erro na requisição"));
     }
 
-    function irParaLogin() {
-        console.log("Redirecionando para tela de Login...");
-    }
-
     const AdminLogado = usuarioLogado?.cargo?.toLowerCase() === "administrador";
 
     return (
         <main className={styles.pageContainer}>
+            <CardErro 
+                mensagem={mensagemErro} 
+                aoFechar={() => setMensagemErro("")} 
+            />
+
             <UsuarioForm 
                 nome={nome} setNome={setNome}
                 email={email} setEmail={setEmail}

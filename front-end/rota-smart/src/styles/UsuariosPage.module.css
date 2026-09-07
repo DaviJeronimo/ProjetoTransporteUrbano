@@ -1,17 +1,42 @@
+
 .pageContainer {
-  width: 100%;
   min-height: 100vh;
+  width: 100%;
+  padding: 32px 16px; 
+  box-sizing: border-box;
+
+  
+  background-image: 
+    linear-gradient(
+      135deg,
+      rgba(10, 15, 30, 0.92) 0%,    
+      rgba(15, 23, 42, 0.88) 50%,   
+      rgba(30, 58, 138, 0.82) 100%  
+    ),
+    url("../assets/fundo-rotasmart.jpg"); 
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0;
-  background-color: #f8fafc;
-  box-sizing: border-box;
+  align-items: center;     
+  justify-content: center; 
+}
+
+
+.pageContainer h1, .pageContainer h2 {
+  color: #ffffff;
+  margin-bottom: 5%; 
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .secaoLista {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }

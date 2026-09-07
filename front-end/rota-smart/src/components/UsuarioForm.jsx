@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/UsuarioForm.module.css";
+import logo from "../assets/rotasmart-logo.png";
 
 export function UsuarioForm({ 
   nome, setNome, 
@@ -29,6 +30,7 @@ export function UsuarioForm({
       </div>
 
       <div className={styles.painelDireito}>
+        <img src={logo} alt="RotaSmart Logo" className={styles.logoForm} />
         <h2 className={styles.tituloForm}>Criar Conta</h2>
 
         <div className={styles.campo}>

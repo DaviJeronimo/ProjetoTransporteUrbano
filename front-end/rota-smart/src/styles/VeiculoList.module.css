@@ -1,11 +1,10 @@
 .listContainer {
-  width: 90%;
-  max-width: 750px;
-  margin: 20px auto;
-  padding: 20px;
+  width: 100%;
+  max-width: 780px;
   background-color: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   box-sizing: border-box;
 }
 
@@ -13,53 +12,65 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .titulo {
-  font-size: 18px;
-  color: #1e3a8a;
-  font-weight: bold;
+  font-size: 20px;
+  color: #1e293b;
+  margin: 0;
 }
 
-.badgeFiltro {
+.tipoUsuario {
+  background-color: #4865f6;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-size: 12px;
-  background-color: #e2e8f0;
-  padding: 5px 10px;
-  border-radius: 4px;
-  color: #1d4ed8;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .itemVeiculo {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  background-color: #f8fafc;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.infoVeiculo strong {
+  font-size: 16px;
+  color: #0f172a;
 }
 
 .infoVeiculo p {
-  margin: 4px 0;
-  color: #333333;
-  font-size: 14px;
+  margin: 4px 0 0 0;
+  font-size: 13px;
+  color: #64748b;
 }
 
 .btnDeletar {
-  padding: 8px 12px;
-  background-color: #dc2626;
+  background-color: #ef4444;
   color: #ffffff;
   border: none;
-  border-radius: 4px;
-  font-size: 13px;
+  padding: 8px 16px;
+  border-radius: 20px;
   cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .btnDeletar:hover {
-  background-color: #b91c1c;
+  background-color: #dc2626;
+}
+
+.mensagemVazia {
+  text-align: center;
+  color: #64748b;
+  font-style: italic;
 }

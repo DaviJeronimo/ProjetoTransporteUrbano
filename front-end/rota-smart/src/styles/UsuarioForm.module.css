@@ -12,7 +12,30 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* Painel Esquerdo (Atalho para Login) */
+.cardErro {
+  background-color: #f8d7da;
+  color: #842029;
+  border: 1px solid #f5c2c7;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btnFechar {
+  background: none;
+  border: none;
+  color: #842029;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
 .painelEsquerdo {
   width: 40%;
   background-color: #2563eb;
@@ -54,7 +77,7 @@
   color: #2563eb;
 }
 
-/* Painel Direito (Campos de Cadastro na Vertical) */
+
 .painelDireito {
   width: 60%;
   padding: 40px 30px;
@@ -105,7 +128,15 @@
   background-color: #1d4ed8;
 }
 
-/* Responsividade para Celulares (telas até 768px) */
+.logoForm {
+  width: 72px;
+  height: auto;
+  display: block;
+  margin: 0 auto 16px auto;
+  object-fit: contain;
+}
+
+
 @media (max-width: 768px) {
   .cardContainer {
     flex-direction: column;
